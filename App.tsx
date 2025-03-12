@@ -1,28 +1,35 @@
 import { useState } from "react";
-import { StyleSheet,Text, View } from "react-native";
+import { StyleSheet,Text, TextInput, View,Button } from "react-native";
 
 export default function App(){
-    //datatype
-    //string
-    const [name, setName] = useState<string>("hoide");
-    //number
-    const [age, setAge] = useState<number>(20);
-    // <number> trong hàng là ép kiểu dl(ko thì thằng typescript nó sẽ tự đoán kiẻu dlieu)
-
-    //null,undefined,boolean
-    const test=false;// ko hiện gì đâu
-
-    //object,array
-    const [person, setPerson] = useState({
-        name: "hoide",
-        age: 20
-    })
+    const [name, setName] = useState<string>("a");
+   
     return (
         <View style={styles.container}>
             <View>
-                <Text style={styles.text}> {name}</Text>
-                <Text style={styles.text}> {JSON.stringify(person)}</Text>
+                
+                <TextInput 
+                onChangeText={value => setName(value)} // khi input thay doi gia tri thi ham nay se duoc goi
+                value={name}
+                autoCapitalize="none"
+                autoCorrect={false}
+                // keyboardType="numeric"
+                // maxLength={2}
+                // multiline
+
+                style={{
+                    //cai duoi de hien thi (lam 1 o input)
+                    borderColor: 'violet', 
+                    borderWidth: 1, 
+                    padding: 10,
+                    marginBottom: 10,
+                    borderRadius: 10,
+                }}/>
             </View>
+
+            <Button title='add new'/>
+
+            <Text style={styles.text}> {name}</Text>
             <Text style={styles.hoicailon}> chao may nha
                 <Text> Hello World!</Text>
             </Text>
