@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet,Text, TextInput, View,Button } from "react-native";
+import { StyleSheet,ScrollView,Text, TextInput, View,Button } from "react-native";
 
 export default function App(){
     const [name, setName] = useState<string>("a");
@@ -15,6 +15,11 @@ export default function App(){
         { id: 8, title: 'task 8' },
         { id: 9, title: 'task 9'},
         { id: 10, title: 'task 10' },
+        { id: 11, title: 'task 11' },
+        { id: 12, title: 'task 12' },
+        { id: 13, title: 'task 13' },
+        { id: 14, title: 'task 14' },
+        { id: 15, title: 'task 15' },
 
     ])
 
@@ -45,16 +50,21 @@ export default function App(){
             onPress={()=>alert("click me")}
             />
 
-           <View style={{ 
+           <ScrollView  style={{ 
             marginTop: 20,
             borderColor:'red',
-            borderWidth:1}}>
+            borderWidth:1
+            }}>
                 {todoList.map(todo=>{
                     return (
-                        <Text style={styles.todo} >{todo.title}</Text>
+                        <Text key={todo.id} 
+                            style={styles.todo} 
+                        >
+                            {todo.title}
+                        </Text>
                     )
                 })}
-           </View>
+           </ScrollView>
         </View>
     );
 
