@@ -3,7 +3,21 @@ import { StyleSheet,Text, TextInput, View,Button } from "react-native";
 
 export default function App(){
     const [name, setName] = useState<string>("a");
-   
+    
+    const[todoList, settodoList] = useState([
+        { id: 1, title: 'task 1' },
+        { id: 2, title: 'task 2' },
+        { id: 3, title: 'task 3' },
+        { id: 4, title: 'task 4' },
+        { id: 5, title: 'task 5' },
+        { id: 6, title: 'task 6' },
+        { id: 7, title: 'task 7' },
+        { id: 8, title: 'task 8' },
+        { id: 9, title: 'task 9'},
+        { id: 10, title: 'task 10' },
+
+    ])
+
     return (
         <View style={styles.container}>
             <View>
@@ -27,18 +41,33 @@ export default function App(){
                 }}/>
             </View>
 
-            <Button title='add new'/>
+            <Button title='add new'
+            onPress={()=>alert("click me")}
+            />
 
-            <Text style={styles.text}> {name}</Text>
-            <Text style={styles.hoicailon}> chao may nha
-                <Text> Hello World!</Text>
-            </Text>
+           <View style={{ 
+            marginTop: 20,
+            borderColor:'red',
+            borderWidth:1}}>
+                {todoList.map(todo=>{
+                    return (
+                        <Text style={styles.todo} >{todo.title}</Text>
+                    )
+                })}
+           </View>
         </View>
     );
 
 }
 // css in js /styled component
 const styles = StyleSheet.create({
+    todo: {
+        fontSize:30,
+        backgroundColor:'pink',
+        marginBottom:10,
+        padding:15,
+
+    },
     hoicailon: {
         color: "green",
     },
@@ -50,6 +79,8 @@ const styles = StyleSheet.create({
     container: {
     flex: 1, 
     backgroundColor: 'white', 
+    fontSize:60, color:'red',
+    marginTop:50,
     // justifyContent: 'center', 
     // alignItems: 'center',
     paddingTop: 30,
