@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { StyleSheet,ScrollView,Text, TextInput, View,Button } from "react-native";
+import { StyleSheet,ScrollView,FlatList,Text, TextInput, View,Button } from "react-native";
 
 export default function App(){
     const [name, setName] = useState<string>("a");
     
     const[todoList, settodoList] = useState([
-        { id: 1, title: 'task 1' },
-        { id: 2, title: 'task 2' },
+        { id: 1, title: 'task 1' ,key: 'hehe'},
+        { id: 2, title: 'task 2' ,key: 'hehe'},
         { id: 3, title: 'task 3' },
         { id: 4, title: 'task 4' },
         { id: 5, title: 'task 5' },
         { id: 6, title: 'task 6' },
         { id: 7, title: 'task 7' },
         { id: 8, title: 'task 8' },
-        { id: 9, title: 'task 9'},
+        { id: 9, title: 'task 9' },
         { id: 10, title: 'task 10' },
         { id: 11, title: 'task 11' },
         { id: 12, title: 'task 12' },
@@ -50,11 +50,28 @@ export default function App(){
             onPress={()=>alert("click me")}
             />
 
-           <ScrollView  style={{ 
-            marginTop: 20,
-            borderColor:'red',
-            borderWidth:1
-            }}>
+
+            <FlatList
+            style={{ 
+                marginTop: 20,
+                borderColor:'red',
+                borderWidth:1
+                }}
+            data={todoList}
+            keyExtractor={(item)=>item.id + ""} 
+            // object destructuring data.item
+            renderItem={({item})=> {
+                return (
+                    <Text 
+                    // key={item.id} 
+                        style={styles.todo} 
+                    >
+                        {item.title}
+                    </Text>
+                )
+            }}
+            />
+           {/* <ScrollView  >
                 {todoList.map(todo=>{
                     return (
                         <Text key={todo.id} 
@@ -64,7 +81,7 @@ export default function App(){
                         </Text>
                     )
                 })}
-           </ScrollView>
+           </ScrollView> */}
         </View>
     );
 
