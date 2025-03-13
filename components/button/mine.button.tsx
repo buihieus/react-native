@@ -23,14 +23,17 @@ const styles = StyleSheet.create({
 })
 interface IProps{
     title:string,
-    onPress:any
+    onPress:()=>void;
 }
 const MineButton=(props:IProps)=>{
     const {title,onPress}=props;
     return (
         <Pressable 
-        style={({pressed})=> ({opacity:pressed=== true?0.5:1})}
-        // onPress={()=> alert('hello')}
+        style={({pressed})=> ({
+            opacity:pressed=== true?0.5:1,
+            alignSelf:"flex-start"
+        })}
+        onPress={onPress}
         >
         <View style={styles.btnContainer}>
              <AntDesign 

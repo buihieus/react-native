@@ -23,20 +23,20 @@ const InputTodo =(props: IProps) => {
     const handleAddNewTodo = () => {
         // validate
         if(!name){
-            // Alert.alert('thông tin không hợp lệ',
-            //     'tiêu đề không được để trống',[
-            //         // {
-            //         //   text: 'Ask me later',
-            //         //   onPress: () => console.log('Ask me later pressed'),
-            //         // },
-            //         // {
-            //         //   text: 'Cancel',
-            //         //   onPress: () => console.log('Cancel Pressed'),
-            //         //   style: 'cancel',
-            //         // },
-            //         {text: 'OK cu nhé', onPress: () => console.log('OK Pressed')},
-            //       ]
-            // );
+            Alert.alert('thông tin không hợp lệ',
+                'tiêu đề không được để trống',[
+                    // {
+                    //   text: 'Ask me later',
+                    //   onPress: () => console.log('Ask me later pressed'),
+                    // },
+                    // {
+                    //   text: 'Cancel',
+                    //   onPress: () => console.log('Cancel Pressed'),
+                    //   style: 'cancel',
+                    // },
+                    {text: 'OK cu nhé', onPress: () => console.log('OK Pressed')},
+                  ]
+            );
             //thêm cái Alert. thì ở hộp thoại hiện lên nó sẽ không có từ alert
 
             return
