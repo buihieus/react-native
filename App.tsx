@@ -7,31 +7,30 @@ export default function App(){
 
     
     const[todoList, setTodoList] = useState<ITodo[]>([
-        { id: 1, title: 'task 1' },
-        { id: 2, title: 'task 2' },
-        { id: 3, title: 'task 3' },
-        { id: 4, title: 'task 4' },
-        { id: 5, title: 'task 5' },
-        { id: 6, title: 'task 6' },
-        { id: 7, title: 'task 7' },
-        { id: 8, title: 'task 8' },
-        { id: 9, title: 'task 9' },
-        { id: 10, title: 'task 10' },
-        { id: 11, title: 'task 11' },
-        { id: 12, title: 'task 12' },
-        { id: 13, title: 'task 13' },
-        { id: 14, title: 'task 14' },
-        { id: 15, title: 'task 15' },
-
+    
     ])
-
+    function randomInteger(min: number,max: number){
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const addTodo = (text:string) => {
+        
+        const todo = {id:randomInteger(1,1000000),title:text}
+        setTodoList([...todoList, todo])// THÊM MỚI 1 TODO
+    }
+    const deleteTodo = (id:number) => {
+        const newTodo = todoList.filter(todo => todo.id != id);
+        setTodoList(newTodo);
+    }
     return (
         <View style={styles.container}>
            
-        <InputTodo/>  
+        <InputTodo
+        addTodo={addTodo}
+        />  
 
         <ListTodo
         todoList={todoList}
+        deleteTodo={deleteTodo}
         />
            
         </View>
@@ -41,14 +40,6 @@ export default function App(){
 // css in js /styled component
 const styles = StyleSheet.create({
     
-    hoicailon: {
-        color: "green",
-    },
-    text: {
-        fontSize: 50, 
-        fontWeight: 'bold', 
-        color: 'blue'
-    },
     container: {
     flex: 1, 
     backgroundColor: 'white', 

@@ -11,8 +11,17 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     }
 }) 
-const InputTodo =() => {
+interface IProps{
+    addTodo: (v: string) => void;
+}
+const InputTodo =(props: IProps) => {
+
+    const {addTodo} = props;
     const [name, setName] = useState<string>('');
+    
+    const handleAddNewTodo = () => {
+        addTodo(name);
+    }
     return (
         <>
         <View>
@@ -28,7 +37,7 @@ const InputTodo =() => {
         
         <Button 
             title='add new'
-            onPress={()=>alert("click me")}
+            onPress={handleAddNewTodo}//useCallback
         />
         </View>
         </>
