@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, TextInput,View,StyleSheet, Alert } from "react-native";
-
+import AntDesign from '@expo/vector-icons/AntDesign';
+import MineButton from "../button/mine.button";
 const styles = StyleSheet.create({
     todoInput: {
         //cai duoi de hien thi (lam 1 o input)
@@ -37,7 +38,7 @@ const InputTodo =(props: IProps) => {
             //       ]
             // );
             //thêm cái Alert. thì ở hộp thoại hiện lên nó sẽ không có từ alert
-            
+
             return
         }
         addTodo(name);
@@ -45,7 +46,7 @@ const InputTodo =(props: IProps) => {
     }
     return (
         <>
-        <View>
+        <View style={{marginBottom:20}}>
         <TextInput 
             onChangeText={value => setName(value)} // khi input thay doi gia tri thi ham nay se duoc goi
             value={name}
@@ -55,13 +56,17 @@ const InputTodo =(props: IProps) => {
         
             style={styles.todoInput}
         />
-        
-        <Button 
-            title='add new'
-            onPress={handleAddNewTodo}//useCallback
+           
+
+        <MineButton
+        title="Add new"
+        onPress={handleAddNewTodo}
         />
+
         </View>
+
         </>
+        
     )
 }
 
