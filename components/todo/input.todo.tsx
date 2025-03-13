@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, TextInput,View,StyleSheet } from "react-native";
+import { Button, TextInput,View,StyleSheet, Alert } from "react-native";
 
 const styles = StyleSheet.create({
     todoInput: {
@@ -20,7 +20,28 @@ const InputTodo =(props: IProps) => {
     const [name, setName] = useState<string>('');
     
     const handleAddNewTodo = () => {
+        // validate
+        if(!name){
+            // Alert.alert('thông tin không hợp lệ',
+            //     'tiêu đề không được để trống',[
+            //         // {
+            //         //   text: 'Ask me later',
+            //         //   onPress: () => console.log('Ask me later pressed'),
+            //         // },
+            //         // {
+            //         //   text: 'Cancel',
+            //         //   onPress: () => console.log('Cancel Pressed'),
+            //         //   style: 'cancel',
+            //         // },
+            //         {text: 'OK cu nhé', onPress: () => console.log('OK Pressed')},
+            //       ]
+            // );
+            //thêm cái Alert. thì ở hộp thoại hiện lên nó sẽ không có từ alert
+            
+            return
+        }
         addTodo(name);
+        setName('');
     }
     return (
         <>
