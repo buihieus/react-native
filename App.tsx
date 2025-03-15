@@ -23,22 +23,22 @@ export default function App(){
         setTodoList(newTodo);
     }
     return (
-        <FlexBox/>
-        // <TouchableWithoutFeedback
-        // onPress={() => Keyboard.dismiss()}>
-        // <View style={styles.container}>
+        // <FlexBox/>
+        <TouchableWithoutFeedback
+        onPress={() => Keyboard.dismiss()}>
+        <View style={styles.container}>
            
-        // <InputTodo
-        // addTodo={addTodo}
-        // />  
+        <InputTodo
+        addTodo={addTodo}
+        />  
 
-        // <ListTodo
-        // todoList={todoList}
-        // deleteTodo={deleteTodo}
-        // />
+        <ListTodo
+        todoList={todoList}
+        deleteTodo={deleteTodo}
+        />
            
-        // </View>
-        // </TouchableWithoutFeedback>
+        </View>
+        </TouchableWithoutFeedback>
     );
 
 }
