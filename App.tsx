@@ -1,10 +1,6 @@
-import { useState } from "react";
-import { Keyboard, StyleSheet, TouchableWithoutFeedback, View, Text, Button } from "react-native";
+import {  View, Text, Button } from "react-native";
 
-import InputTodo from "./components/todo/input.todo";//RELATIVE PATH
-import ListTodo from "./components/todo/list.todo";
-import FlexBox from "./components/todo/flexbox";
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from "@react-navigation/native";
 export default function App() {
@@ -12,29 +8,29 @@ export default function App() {
   const Stack = createNativeStackNavigator();
 
   function HomeScreen(props: any) {
-    // console.log(">>> check props", props);
     const navigation = props.navigation;
+
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
         <View style={{ marginVertical: 10 }}>
           <Button
+            onPress={() => navigation.navigate('Details')}
             title="go to details"
-            onPress={() => navigation.navigate('Details')}
           />
         </View>
-        <Text>Home Screen</Text>
+
         <View style={{ marginVertical: 10 }}>
           <Button
+            onPress={() => navigation.navigate('Details', { userId: 1, name: "son" })}
             title="go to user id =1"
-            onPress={() => navigation.navigate('Details')}
           />
         </View>
-        <Text>Home Screen</Text>
+
         <View style={{ marginVertical: 10 }}>
           <Button
+            onPress={() => navigation.navigate('Details', { userId: 1, name: "son" })}
             title="go to user id =2"
-            onPress={() => navigation.navigate('Details')}
           />
         </View>
 
@@ -44,12 +40,17 @@ export default function App() {
 
 
   function DetailsScreen(props: any) {
+    console.log(props);
+    const route:any = useRoute();
+    // console.log(">>> check route", props);
     const navigation: any = useNavigation();
+    // console.log(">>> check route", route.params);
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>
-        <Text>user id = ??</Text>
-        <Button title="go back home" onPress={() => navigation.goBack()}
+        <Text>user id = {route.params.userId}</Text>
+        <Button title="go back home"
+          onPress={() => navigation.goBack()}
         />
       </View>
     );
